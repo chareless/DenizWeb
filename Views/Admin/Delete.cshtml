@@ -1,0 +1,135 @@
+﻿@model DenizWeb.Models.Site
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Sil</h1>
+    <h3>Site Bilgileri</h3>
+    <h5>Silmek istediğinize emin misiniz?</h5>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.isim)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.isim)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.meslek)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.meslek)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.profileFotoUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.profileFotoUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.backFotoUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.backFotoUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.hakkımda)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.hakkımda)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.dogumTarihi)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.dogumTarihi)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.dogumYeri)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.dogumYeri)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.egitimDurumu)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.egitimDurumu)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.egitimBolumu)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.egitimBolumu)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.diller)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.diller)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.adres)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.adres)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.adresUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.adresUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.emailUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.emailUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.formUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.formUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sliderFotoUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sliderFotoUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sliderFotoBaslik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sliderFotoBaslik)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sliderFotoAciklama)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sliderFotoAciklama)
+            </dd>
+        </dl>
+        <div class="card-body">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MyId" />
+                <input type="submit" value="Sil" class="btn btn-danger" /> |
+                <a asp-action="Index">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

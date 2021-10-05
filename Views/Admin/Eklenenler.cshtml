@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DenizWeb.Models.Eklenenler>
+
+@{
+    ViewData["Title"] = "Eklenenler";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h3>Son Eklenenler</h3>
+</div>
+<div>
+    <div class="card-body">
+        <p>
+            <a asp-action="EklenenCreate">Oluştur </a><br />
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.idName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.baslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tarih)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.baslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tarih)
+                        </td>
+                        <td>
+                        <td>
+                            <a asp-action="EklenenEdit" asp-route-id="@item.id">Düzenle</a> |
+                            <a asp-action="EklenenDetails" asp-route-id="@item.id">Detaylar</a> |
+                            <a asp-action="EklenenDelete" asp-route-id="@item.id">Sil</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

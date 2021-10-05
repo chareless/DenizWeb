@@ -1,0 +1,51 @@
+﻿@model DenizWeb.Models.Sosyal
+
+@{
+    ViewData["Title"] = "SosyalDelete";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Sil</h1>
+    <h3>Sosyal Medya Bilgileri</h3>
+    <h5>Silmek istediğinize emin misiniz?</h5>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sosyalUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sosyalUrl)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sosyalTur)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sosyalTur)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sosyalInfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sosyalInfo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.sosyalFooter)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.sosyalFooter)
+            </dd>
+        </dl>
+        <div class="card-body">
+            <form asp-action="SosyalDelete">
+                <input type="hidden" asp-for="sosyalId" />
+                <input type="submit" value="Sil" class="btn btn-danger" /> |
+                <a asp-action="Index">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

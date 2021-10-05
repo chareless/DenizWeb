@@ -1,0 +1,109 @@
+﻿@model DenizWeb.Models.Alldata
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @foreach (var item in Model.Icerik)
+    {
+        <title>@item.Blog.baslik</title>
+        break;
+    }
+    <meta name="description" content="" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/aos.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/styles/main.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/favicon.ico">
+</head>
+<body id="top">
+    <header>
+        <div class="profile-page sidebar-collapse">
+            <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-primary" color-on-scroll="400">
+                <div class="container">
+                    <div class="navbar-translate">
+                        <a class="navbar-brand" href="#" rel="tooltip"></a>
+                        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-bar bar1"></span><span class="navbar-toggler-bar bar2"></span><span class="navbar-toggler-bar bar3"></span></button>
+                    </div>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link smooth-scroll" asp-area="" asp-controller="Home" asp-action="Blog">Siteye Dön</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="profile-page">
+        <div class="wrapper">
+            <div class="page-header page-header-large" filter-color="#581845">
+                @foreach (var item in Model.Site)
+                {
+                    <div class="page-header-image" data-parallax="true" style="background-image: url('@item.backFotoUrl');"></div>
+                }
+                <div class="container">
+                    <div class="content-center">
+                        @foreach (var items in Model.Site)
+                        {
+                            @foreach (var item in Model.Icerik)
+                            {
+                                if (item.Blog.fotoUrl != null)
+                                {
+                                    <div class="cc-profile-image"><a href="../Blog/Icerik?text=@item.Blog.idName"><img src="@item.Blog.fotoUrl" alt="Image" /></a></div>
+
+                                    <div class="h1 title">@item.Blog.baslik</div>
+                                }
+                                else
+                                {
+                                    <div class="cc-profile-image"><a href="../Blog/Icerik?text=@item.Blog.idName"><img src="@items.profileFotoUrl" alt="Image" /></a></div>
+
+                                    <div class="h1 title">@item.Blog.baslik</div>
+                                }
+                                break;
+                            }}
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="container">
+                        <div class="button-container">
+                            @foreach (var items in Model.Sosyal)
+                            {
+                                <a class="btn btn-default btn-round btn-lg btn-icon" href="@items.sosyalUrl" rel="tooltip" title="@items.sosyalInfo" target="_blank"><i class="@items.sosyalTur"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            @foreach (var item in Model.Sosyal)
+            {
+                <a class="@item.sosyalFooter" href="@item.sosyalUrl" target="_blank"><i class="@item.sosyalTur" aria-hidden="true"></i></a>
+            }
+        </div>
+        @foreach (var item in Model.Site)
+        {
+            <div class="h4 title text-center">@item.isim</div>
+        }
+        <div class="text-center text-muted">
+            <p>&copy; Creative CV. All rights reserved.<br>Design - <a class="credit" href="https://templateflip.com" target="_blank">TemplateFlip</a></p>
+        </div>
+    </footer>
+
+    <script src="~/js/core/jquery.3.2.1.min.js"></script>
+    <script src="~/js/core/popper.min.js"></script>
+    <script src="~/js/core/bootstrap.min.js"></script>
+    <script src="~/js/now-ui-kit.js?v=1.1.0"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/scripts/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

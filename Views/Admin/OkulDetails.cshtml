@@ -1,0 +1,46 @@
+﻿@model DenizWeb.Models.Okul
+
+@{
+    ViewData["Title"] = "OkulDetails";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Detaylar</h1>
+    <h3>Okul Bilgileri</h3>
+</div>
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.okulAd)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.okulAd)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.okulTarih)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.okulTarih)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.okulTur)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.okulTur)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.okulInfo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.okulInfo)
+            </dd>
+        </dl>
+    </div>
+</div>
+    <div class="card-body">
+        <a asp-action="OkulEdit" asp-route-id="@Model.okulId">Düzenle</a> |
+        <a asp-action="Index">Geri</a>
+    </div>

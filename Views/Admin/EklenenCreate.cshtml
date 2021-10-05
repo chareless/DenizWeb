@@ -1,0 +1,48 @@
+﻿@model DenizWeb.Models.Eklenenler
+
+@{
+    ViewData["Title"] = "EklenenCreate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Oluştur</h1>
+    <h3>Son Eklenenler</h3>
+</div>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <form asp-action="EklenenCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="idName" class="control-label"></label>
+                        <input asp-for="idName" class="form-control" />
+                        <span asp-validation-for="idName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="baslik" class="control-label"></label>
+                        <input asp-for="baslik" class="form-control" />
+                        <span asp-validation-for="baslik" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="tarih" class="control-label"></label>
+                        <input asp-for="tarih" class="form-control" />
+                        <span asp-validation-for="tarih" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Oluştur" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="Eklenenler">Geri</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

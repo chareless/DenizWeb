@@ -1,0 +1,135 @@
+﻿@model DenizWeb.Models.Site
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Oluştur</h1>
+    <h3>Site Bilgileri</h3>
+</div>
+<script src="https://cdn.tiny.cloud/1/xpsubeellio00u3cjq5p451b6c1od2rh9fyvp7qqwzoumm5l/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="isim" class="control-label"></label>
+                        <input asp-for="isim" class="form-control" />
+                        <span asp-validation-for="isim" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="meslek" class="control-label"></label>
+                        <input asp-for="meslek" class="form-control" />
+                        <span asp-validation-for="meslek" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="profileFotoUrl" class="control-label"></label>
+                        <input asp-for="profileFotoUrl" class="form-control" />
+                        <span asp-validation-for="profileFotoUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="backFotoUrl" class="control-label"></label>
+                        <input asp-for="backFotoUrl" class="form-control" />
+                        <span asp-validation-for="backFotoUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="hakkımda" class="control-label"></label>
+                        <textarea asp-for="hakkımda"></textarea>
+                        <span asp-validation-for="hakkımda" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dogumTarihi" class="control-label"></label>
+                        <input asp-for="dogumTarihi" class="form-control" />
+                        <span asp-validation-for="dogumTarihi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dogumYeri" class="control-label"></label>
+                        <input asp-for="dogumYeri" class="form-control" />
+                        <span asp-validation-for="dogumYeri" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="egitimDurumu" class="control-label"></label>
+                        <input asp-for="egitimDurumu" class="form-control" />
+                        <span asp-validation-for="egitimDurumu" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="egitimBolumu" class="control-label"></label>
+                        <input asp-for="egitimBolumu" class="form-control" />
+                        <span asp-validation-for="egitimBolumu" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="diller" class="control-label"></label>
+                        <input asp-for="diller" class="form-control" />
+                        <span asp-validation-for="diller" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="adres" class="control-label"></label>
+                        <input asp-for="adres" class="form-control" />
+                        <span asp-validation-for="adres" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="adresUrl" class="control-label"></label>
+                        <input asp-for="adresUrl" class="form-control" />
+                        <span asp-validation-for="adresUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="email" class="control-label"></label>
+                        <input asp-for="email" class="form-control" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="emailUrl" class="control-label"></label>
+                        <input asp-for="emailUrl" class="form-control" />
+                        <span asp-validation-for="emailUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="formUrl" class="control-label"></label>
+                        <input asp-for="formUrl" class="form-control" />
+                        <span asp-validation-for="formUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sliderFotoUrl" class="control-label"></label>
+                        <input asp-for="sliderFotoUrl" class="form-control" />
+                        <span asp-validation-for="sliderFotoUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sliderFotoBaslik" class="control-label"></label>
+                        <input asp-for="sliderFotoBaslik" class="form-control" />
+                        <span asp-validation-for="sliderFotoBaslik" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sliderFotoAciklama" class="control-label"></label>
+                        <input asp-for="sliderFotoAciklama" class="form-control" />
+                        <span asp-validation-for="sliderFotoAciklama" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Oluştur" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="Index">Geri</a>
+</div>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,54 @@
+﻿@model DenizWeb.Models.Yorum
+
+@{
+    ViewData["Title"] = "YorumOnayla";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Yorumu Onayla</h1>
+</div>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="YorumOnayla">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="id" />
+                    <div class="form-group">
+                        <label asp-for="icerik" class="control-label"></label>
+                        <input asp-for="icerik" class="form-control" readonly="readonly"/>
+                        <span asp-validation-for="icerik" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="onay" /> @Html.DisplayNameFor(model => model.onay)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="userId" class="control-label" hidden></label>
+                        <select asp-for="userId" class="form-control" asp-items="ViewBag.userId" hidden></select>
+                        <span asp-validation-for="userId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="blogId" class="control-label" hidden></label>
+                        <select asp-for="blogId" class="form-control" asp-items="ViewBag.blogId" hidden></select>
+                        <span asp-validation-for="blogId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="Yorum">Geri</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

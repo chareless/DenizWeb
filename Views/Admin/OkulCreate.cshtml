@@ -1,0 +1,53 @@
+﻿@model DenizWeb.Models.Okul
+
+@{
+    ViewData["Title"] = "OkulCreate";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Oluştur</h1>
+    <h3>Okul Bilgileri</h3>
+</div>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="OkulCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="okulAd" class="control-label"></label>
+                        <input asp-for="okulAd" class="form-control" />
+                        <span asp-validation-for="okulAd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="okulTarih" class="control-label"></label>
+                        <input asp-for="okulTarih" class="form-control" />
+                        <span asp-validation-for="okulTarih" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="okulTur" class="control-label"></label>
+                        <input asp-for="okulTur" class="form-control" />
+                        <span asp-validation-for="okulTur" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="okulInfo" class="control-label"></label>
+                        <input asp-for="okulInfo" class="form-control" />
+                        <span asp-validation-for="okulInfo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Oluştur" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="Index">Geri</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DenizWeb.Models.Blog>
+
+@{
+    ViewData["Title"] = "Blog";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h3>Blog Bilgileri</h3>
+</div>
+<div>
+    <div class="card-body">
+        <p>
+            <a asp-action="BlogCreate">Oluştur </a><br />
+        </p>
+    </div>
+        <div class="card-body">
+            <h6>Blog Bilgileri</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.idName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.blogTur)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.baslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.altBaslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.aciklama)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.fotoUrl)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.eklemeTarihi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.degistirmeTarihi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.surum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.boyut)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            <a asp-action="BlogEdit" asp-route-id="@item.id">Düzenle</a><br />
+                            <a asp-action="BlogDetails" asp-route-id="@item.id">Detaylar</a><br />
+                            <a asp-action="BlogDelete" asp-route-id="@item.id">Sil</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.blogTur)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.baslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.altBaslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.aciklama)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fotoUrl)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.eklemeTarihi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.degistirmeTarihi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.surum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.boyut)
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

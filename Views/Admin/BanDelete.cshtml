@@ -1,0 +1,57 @@
+﻿@model DenizWeb.Models.Ban
+
+@{
+    ViewData["Title"] = "BanDelete";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Sil</h1>
+    <h3>Yasaklama Bilgileri</h3>
+    <h5>Silmek istediğinize emin misiniz?</h5>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.durum)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.durum)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.banTarihi)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.banTarihi)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User.isim)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.isim)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
+        </dl>
+        <div class="card-body">
+            <form asp-action="BanDelete">
+                <input type="hidden" asp-for="id" />
+                <input type="submit" value="Sil" class="btn btn-danger" /> |
+                <a asp-action="Ban">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

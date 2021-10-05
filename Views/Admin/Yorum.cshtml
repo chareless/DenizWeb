@@ -1,0 +1,110 @@
+﻿@model IEnumerable<DenizWeb.Models.Yorum>
+
+@{
+    ViewData["Title"] = "Yorum";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h3>Yorumlar</h3>
+</div>
+<div>
+    <div class="card col-md-12">
+    <div class="card-body col-md-6">
+        <h6>Onaylanmamış Yorumlar</h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.icerik)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.isim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Blog)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (item.onay != true)
+                    {
+                <tr>
+                    <td>
+                        @Html.Raw(item.icerik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.isim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Blog.id)
+                    </td>
+                    <td>
+                        <a asp-action="YorumOnayla" asp-route-id="@item.id">Onayla</a><br />
+                        <a asp-action="YorumDetails" asp-route-id="@item.id">Detaylar</a><br />
+                        <a asp-action="YorumDelete" asp-route-id="@item.id">Sil</a>
+                    </td>
+                </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-body col-md-6">
+        <h6>Onaylı Yorumlar</h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.icerik)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.isim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Blog)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (item.onay == true)
+                    {
+                <tr>
+                    <td>
+                        @Html.Raw(item.icerik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.isim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Blog.id)
+                    </td>
+                    <td>
+                        <a asp-action="YorumDetails" asp-route-id="@item.id">Detaylar</a><br />
+                        <a asp-action="YorumDelete" asp-route-id="@item.id">Sil</a>
+                    </td>
+                </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+        </div>
+</div>

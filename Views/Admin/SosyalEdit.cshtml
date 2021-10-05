@@ -1,0 +1,55 @@
+﻿@model DenizWeb.Models.Sosyal
+
+@{
+    ViewData["Title"] = "SosyalEdit";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Düzenle</h1>
+    <h3>Sosyal Medya Bilgileri</h3>
+</div>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="SosyalEdit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="sosyalId" />
+                    <div class="form-group">
+                        <label asp-for="sosyalUrl" class="control-label"></label>
+                        <input asp-for="sosyalUrl" class="form-control" />
+                        <span asp-validation-for="sosyalUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sosyalTur" class="control-label"></label>
+                        <input asp-for="sosyalTur" class="form-control" />
+                        <span asp-validation-for="sosyalTur" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sosyalInfo" class="control-label"></label>
+                        <input asp-for="sosyalInfo" class="form-control" />
+                        <span asp-validation-for="sosyalInfo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="sosyalFooter" class="control-label"></label>
+                        <input asp-for="sosyalFooter" class="form-control" />
+                        <span asp-validation-for="sosyalFooter" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="Index">Geri</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

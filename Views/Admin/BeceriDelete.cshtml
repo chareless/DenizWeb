@@ -1,0 +1,39 @@
+﻿@model DenizWeb.Models.Beceriler
+
+@{
+    ViewData["Title"] = "BeceriDelete";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Sil</h1>
+    <h3>Beceri Bilgileri</h3>
+    <h5>Silmek istediğinize emin misiniz?</h5>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.beceri)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.beceri)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.aciklama)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.aciklama)
+            </dd>
+        </dl>
+        <div class="card-body">
+            <form asp-action="BeceriDelete">
+                <input type="hidden" asp-for="id" />
+                <input type="submit" value="Sil" class="btn btn-danger" /> |
+                <a asp-action="Index">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

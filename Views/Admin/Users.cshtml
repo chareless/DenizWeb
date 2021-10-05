@@ -1,0 +1,83 @@
+﻿@model DenizWeb.Models.Alldata
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body mb-6">
+    <h3>Kullanıcı Bilgileri</h3>
+</div>
+<div>
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user.isim)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user.cinsiyet)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.user.dogumTarihi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ban.durum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ban.banTarihi)
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.User)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cinsiyet)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dogumTarihi)
+                </td>
+                @foreach (var ban in Model.Ban)
+                {
+                    if (ban.User.Id == item.Id)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => ban.durum)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => ban.banTarihi)
+                        </td>
+                    }
+
+                }
+
+            </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

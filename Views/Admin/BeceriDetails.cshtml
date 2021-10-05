@@ -1,0 +1,34 @@
+﻿@model DenizWeb.Models.Beceriler
+
+@{
+    ViewData["Title"] = "BeceriDetails";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Detaylar</h1>
+    <h3>Beceri Bilgileri</h3>
+</div>
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.beceri)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.beceri)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.aciklama)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.aciklama)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="BeceriEdit" asp-route-id="@Model.id">Düzenle</a> |
+    <a asp-action="Index">Geri</a>
+</div>

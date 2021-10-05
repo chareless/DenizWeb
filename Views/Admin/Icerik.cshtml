@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DenizWeb.Models.Icerik>
+
+@{
+    ViewData["Title"] = "İçerik";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h3>İçerik Bilgileri</h3>
+</div>
+<div>
+    <div class="card-body">
+        <p>
+            <a asp-action="IcerikCreate">Oluştur </a><br />
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h6>İçerik Bilgileri</h6>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.idTag)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.baslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.aciklama)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.eklemeTarihi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Blog)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idTag)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.baslik)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.aciklama)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.eklemeTarihi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Blog.id)
+                        </td>
+                        <td>
+                        <td>
+                            <a asp-action="IcerikEdit" asp-route-id="@item.icerikId">Düzenle</a><br />
+                            <a asp-action="IcerikDetails" asp-route-id="@item.icerikId">Detaylar</a><br />
+                            <a asp-action="IcerikDelete" asp-route-id="@item.icerikId">Sil</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

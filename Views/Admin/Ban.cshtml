@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DenizWeb.Models.Ban>
+
+@{
+    ViewData["Title"] = "Ban";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h3>Yasaklama Bilgileri</h3>
+</div>
+<div>
+    <div class="card-body">
+        <p>
+            <a asp-action="UserBan">Kullanıcı Yasakla </a><br />
+        </p>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.isim)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.banTarihi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.durum)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.isim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.banTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.durum)
+                    </td>
+                    <td>
+                        <a asp-action="UserUnban" asp-route-id="@item.id">Yasağı Düzenle</a>|
+                        <a asp-action="BanDelete" asp-route-id="@item.id">Sil</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

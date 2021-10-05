@@ -1,0 +1,52 @@
+﻿@model DenizWeb.Models.Icerik
+
+@{
+    ViewData["Title"] = "IcerikDetails";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Detaylar</h1>
+    <h3>İçerik Bilgileri</h3>
+</div>
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.idTag)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.idTag)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.baslik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.baslik)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.aciklama)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.aciklama)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.eklemeTarihi)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.eklemeTarihi)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Blog)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Blog.id)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="IcerikEdit" asp-route-id="@Model.icerikId">Düzenle</a> |
+    <a asp-action="Icerik">Geri</a>
+</div>

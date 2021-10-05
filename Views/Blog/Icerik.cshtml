@@ -1,0 +1,268 @@
+﻿@model DenizWeb.Models.Alldata
+@{
+    Layout = "_LayoutBlog";
+    int sayac = 0;
+    int yorumsayac = 0;
+}
+
+<script src="https://cdn.tiny.cloud/1/xpsubeellio00u3cjq5p451b6c1od2rh9fyvp7qqwzoumm5l/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+@foreach (var item in Model.Blog)
+{
+    @if (item.blogTur == "buyuk")
+    {
+        <div class="section" id="@item.idName">
+            <div class="container">
+                <div class="card" data-aos="fade-up" data-aos-offset="10">
+                    <div class="row">
+                        <div class="card-body col-lg-12 col-md-12">
+                            <div class="h4 mt-0 title">@item.baslik</div>
+                            <p class="category text-black">@item.altBaslik</p>
+                            @if (item.fotoUrl != null)
+                            {
+                                <div class="card-body">
+                                    <img src="@item.fotoUrl">
+                                </div>
+                            }
+                        <div class="card-body">
+                            <p>@Html.Raw(item.aciklama)</p>
+                            <p>Çıkış Tarihi : <h7>@item.eklemeTarihi</h7></p>
+                            @if (item.degistirmeTarihi != null)
+                            {
+                                <p>Son Değiştirilme Tarihi : <h7>@item.degistirmeTarihi</h7></p>
+                            }
+                            @if (item.surum != null)
+                            {
+                                <p>Sürüm : <h7>@item.surum</h7></p>
+                            }
+                            @if (item.boyut != null)
+                            {
+                                <p>Boyut : <h7>@item.boyut</h7></p>
+                            }
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (item.blogTur == "kucuk")
+    {
+        <div class="section" id="@item.idName">
+            <div class="container">
+                <div class="card" data-aos="fade-up" data-aos-offset="10">
+                    <div class="row">
+                        <div class="card-body col-lg-12 col-md-12">
+                            <div class="h4 mt-0 title">@item.baslik</div>
+                            <p class="category text-black">@item.altBaslik</p>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
+                                        <div class="card-body">
+                                            <img src="@item.fotoUrl">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="card-body">
+                                            <p>@Html.Raw(item.aciklama)</p>
+                                            <p>Çıkış Tarihi : <h7>@item.eklemeTarihi</h7></p>
+                                            @if (item.degistirmeTarihi != null)
+                                            {
+                                                <p>Son Değiştirilme Tarihi : <h7>@item.degistirmeTarihi</h7></p>
+                                            }
+                                            @if (item.surum != null)
+                                            {
+                                                <p>Sürüm : <h7>@item.surum</h7></p>
+                                            }
+                                            @if (item.boyut != null)
+                                            {
+                                                <p>Boyut : <h7>@item.boyut</h7></p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @foreach (var items in Model.Icerik)
+    {
+        @if (items.idTag != null)
+        {
+            <div class="section" id="@items.idTag">
+                <div class="container">
+                    <div class="card" data-aos="fade-up" data-aos-offset="10">
+                        <div class="row">
+                            <div class="card-body col-lg-12 col-md-12">
+                                <div class="h3 mt-0 title">@items.baslik</div>
+                                @Html.Raw(items.aciklama)
+                                <p><h7>@items.eklemeTarihi</h7></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+
+    <div class="section" id="yorumlar">
+        <div class="container">
+            <div class="card" data-aos="fade-up" data-aos-offset="10">
+                <div class="row">
+                    <div class="card-body col-lg-12 col-md-12">
+                        <div class="h4 mt-0 title">Onaylı Yorumlar</div>
+                        <div class="card-body">
+                            <div class="card">
+                                @foreach (var items in Model.Yorum)
+                                {
+                                    sayac = 0;
+                                    <div class="card-body">
+                                        <div class="card-body">
+                                            <div class="mt-0 title">
+                                                @items.User.isim - (@items.User.UserName)  @if (User.IsInRole("Admin"))
+                                                {@items.User.Id;
+                                            }
+                                                @if (((User.Identity.IsAuthenticated) && (items.User.Email == User.Identity.Name)) || (User.IsInRole("Admin")))
+                                                {
+
+                                                    @foreach (var banitem in Model.Ban)
+                                                    {
+                                                        
+                                                        if ((banitem.User.Id == items.User.Id) && banitem.durum == "Banlı")
+                                                        {
+                                                            <a asp-controller="Blog" asp-action="YorumDelete" asp-route-id="@items.id">Yorumu Sil </a>
+                                                            if (User.IsInRole("Admin"))
+                                                            {
+                                                                <a asp-controller="Admin" asp-action="UserUnban" asp-route-id="@banitem.id">Yasağı Kaldır</a>
+                                                            }
+
+                                                        }
+                                                        if ((banitem.User.Id != items.User.Id))
+                                                        {
+                                                            sayac++;
+                                                            if (sayac == Model.Ban.Count())
+                                                            {
+                                                                <a asp-controller="Blog" asp-action="YorumDelete" asp-route-id="@items.id">Yorumu Sil </a>
+                                                                if (User.IsInRole("Admin"))
+                                                                {
+                                                                    <a asp-controller="Admin" asp-action="UserBan">Kullanıcıyı Yasakla</a>
+                                                                }
+
+                                                            }
+
+                                                        }
+                                                        if ((banitem.User.Id == items.User.Id) && banitem.durum != "Banlı")
+                                                        {
+                                                            <a asp-controller="Blog" asp-action="YorumDelete" asp-route-id="@items.id">Yorumu Sil </a>
+                                                            if (User.IsInRole("Admin"))
+                                                            {
+                                                                <a asp-controller="Admin" asp-action="UserBan">Kullanıcıyı Yasakla</a>
+                                                            }
+
+                                                        }
+                                                    }
+                                                    if (Model.Ban.Count() < 1)
+                                                    {
+                                                        <a asp-controller="Blog" asp-action="YorumDelete" asp-route-id="@items.id">Yorumu Sil </a>
+                                                        if (User.IsInRole("Admin"))
+                                                        {
+                                                            <a asp-controller="Admin" asp-action="UserBan">Kullanıcıyı Yasakla</a>
+                                                        }
+
+                                                    }
+                                                }
+                                            </div>
+                                            <p>
+                                                @Html.Raw(items.icerik)
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @foreach (var banitem in Model.Ban)
+                            {
+                                if (User.Identity.Name != banitem.User.UserName)
+                                {
+                                    yorumsayac++;
+                                    if (yorumsayac == Model.Ban.Count())
+                                    {
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <div class="card-body">
+                                                <div class="section">
+                                                    <h5>Yorumunuz</h5>
+                                                </div>
+                                                @foreach (var items in Model.User)
+                                                {
+                                                    if (items.UserName == User.Identity.Name)
+                                                    {
+                                                        <div class="col-md-12">
+                                                            <form asp-controller="Blog" asp-action="Icerik">
+                                                                <div class="form-group">
+                                                                    <input asp-for="yorum.userId" value="@items.Id" class="form-control" hidden />
+                                                                    <input asp-for="yorum.blogId" value="@item.id" class="form-control" hidden />
+                                                                    <textarea asp-for="yorum.icerik" placeholder="Yorumunuz"></textarea>
+                                                                </div>
+                                                                <button type="submit"><i class="fa fa-location-arrow"></i>Yorum Yap</button>
+                                                            </form>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        }
+                                    }
+                                }
+                                if ((User.Identity.Name == banitem.User.UserName) && banitem.durum != "Banlı")
+                                {
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <div class="card-body">
+                                                <div class="section">
+                                                    <h5>Yorumunuz</h5>
+                                                </div>
+                                                @foreach (var items in Model.User)
+                                                {
+                                                    if (items.UserName == User.Identity.Name)
+                                                    {
+                                                        <div class="col-md-12">
+                                                            <form asp-controller="Blog" asp-action="Icerik">
+                                                                <div class="form-group">
+                                                                    <input asp-for="yorum.userId" value="@items.Id" class="form-control" hidden />
+                                                                    <input asp-for="yorum.blogId" value="@item.id" class="form-control" hidden />
+                                                                    <textarea asp-for="yorum.icerik" placeholder="Yorumunuz"></textarea>
+                                                                </div>
+                                                                <button type="submit"><i class="fa fa-location-arrow"></i>Yorum Yap</button>
+                                                            </form>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        }
+                                    }
+                                }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+        toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+        toolbar_mode: 'floating',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+    });
+</script>

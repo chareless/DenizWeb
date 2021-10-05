@@ -1,0 +1,45 @@
+﻿@model DenizWeb.Models.Eklenenler
+
+@{
+    ViewData["Title"] = "EklenenDelete";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Sil</h1>
+    <h3>Son Eklenenler</h3>
+    <h5>Silmek istediğinize emin misiniz?</h5>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.idName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.idName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.baslik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.baslik)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.tarih)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.tarih)
+            </dd>
+        </dl>
+        <div class="card-body">
+            <form asp-action="EklenenDelete">
+                <input type="hidden" asp-for="id" />
+                <input type="submit" value="Sil" class="btn btn-danger" /> |
+                <a asp-action="Eklenenler">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>

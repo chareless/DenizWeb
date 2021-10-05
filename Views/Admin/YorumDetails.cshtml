@@ -1,0 +1,44 @@
+﻿@model DenizWeb.Models.Yorum
+@{
+    ViewData["Title"] = "YorumDetails";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="card-body">
+    <h1>Detaylar</h1>
+    <h3>Yorumlar</h3>
+</div>
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.icerik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.icerik)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User.isim)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.isim)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Blog.baslik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Blog.baslik)
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="card-body">
+    <a asp-action="Yorum">Geri</a>
+</div>

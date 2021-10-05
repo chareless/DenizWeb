@@ -1,0 +1,45 @@
+﻿@model DenizWeb.Models.Yorum
+
+@{
+    ViewData["Title"] = "YorumDelete";
+    Layout = "_LayoutAdmin";
+}
+
+<div class=card>
+    <div class="card-body">
+        <h4>Yorum</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.icerik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.Raw(Model.icerik)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User.isim)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.isim)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Blog.baslik)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Blog.baslik)
+            </dd>
+        </dl>
+
+        <form asp-action="YorumDelete">
+            <input type="hidden" asp-for="id" />
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            <a class="btn btn-success" asp-action="Yorum">Geri</a>
+        </form>
+    </div>
+</div>

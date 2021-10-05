@@ -1,0 +1,222 @@
+﻿<div class="page-content">
+    <div>
+        <div class="section" id="about">
+            <div class="container">
+                <div class="card" data-aos="fade-up" data-aos-offset="10">
+                    @foreach (var item in Model.Site)
+                    {
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card-body">
+                                    <div class="h4 mt-0 title">Hakkımda</div>
+                                    <p>
+                                        @Html.Raw(item.hakkımda)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <div class="card-body">
+                                    <div class="h4 mt-0 title">Kişisel Bilgilerim</div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4"><strong class="text-uppercase">Adı Soyadı:</strong></div>
+                                        <div class="col-sm-8">@item.isim</div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4"><strong class="text-uppercase">Doğum Tarihi:</strong></div>
+                                        <div class="col-sm-8">@item.dogumTarihi</div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4"><strong class="text-uppercase">Doğum Yeri:</strong></div>
+                                        <div class="col-sm-8">@item.dogumYeri</div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4"><strong class="text-uppercase">Eğitim Durumu:</strong></div>
+                                        <div class="col-sm-8">@item.egitimDurumu</div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4"><strong class="text-uppercase">Bölümü:</strong></div>
+                                        <div class="col-sm-8">@item.egitimBolumu</div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4"><strong class="text-uppercase">Diller:</strong></div>
+                                        <div class="col-sm-8">@item.diller</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="section" id="skill">
+            <div class="container">
+                <div class="h4 text-center mb-4 title">Teknik Beceriler</div>
+                <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach (var item in Model.Beceriler)
+                            {
+                                <div class="col-md-6">
+                                    <div class="h5 title" style="color:#581845">&nbsp;&nbsp;&nbsp;@item.beceri</div>
+                                    @Html.Raw(item.aciklama)
+                                    <br>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="education">
+            <div class="container cc-education">
+                <div class="h4 text-center mb-4 title">Eğitim Bilgileri</div>
+                @foreach (var item in Model.Okul)
+                {
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50" data-aos-duration="500">
+                                <div class="card-body cc-education-header">
+                                    <p>@item.okulTarih</p>
+                                    <div class="h5">@item.okulTur</div>
+                                </div>
+                            </div>
+                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+                                <div class="card-body">
+                                    <div class="h2">@item.okulAd</div>
+                                    <div class="category">@item.okulInfo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="section" id="portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="h4 text-center mb-4 title">Foto Galeri</div>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-offset="10">
+                    <div class="tab-content gallery">
+                        <div class="tab-pane active" id="web-development">
+                            <div class="ml-auto mr-auto">
+                                <div class="cc-porfolio-image img-raised" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                                    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                                            @foreach (var item in Model.SliderFoto)
+                                            {
+                                                <li data-target="#carousel-example-1z" data-slide-to="@item.sliderFotoId" class="active"></li>
+                                            }
+                                        </ol>
+                                        <div class="carousel-inner" role="listbox">
+                                            @foreach (var item in Model.Site)
+                                            {
+                                                <div class="carousel-item active">
+                                                    <figure class="cc-effect">
+                                                        <img class="d-block w-100" src="@item.sliderFotoUrl" alt="First slide"><figcaption>
+                                                            <div class="h4">@item.sliderFotoBaslik</div>
+                                                            <p>@item.sliderFotoAciklama</p>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                            }
+                                            @foreach (var item in Model.SliderFoto)
+                                            {
+                                                <div class="carousel-item">
+                                                    <figure class="cc-effect">
+                                                        <img class="d-block w-100" src="@item.fotoUrl" alt="Second slide"><figcaption>
+                                                            <div class="h4">@item.fotoBaslik</div>
+                                                            <p>@item.fotoAciklama</p>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                            }
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="contact">
+            <div class="cc-contact-information">
+                <div class="container">
+                    <div class="cc-contact">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="card mb-0" data-aos="zoom-in">
+                                    <div class="h4 text-center title">Bana Ulaşın</div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card-body">
+                                                @foreach (var item in Model.Site)
+                                                {
+                                                    <p class="mb-0"><strong>Adres</strong></p>
+                                                    <p class="pb-2"><a href="@item.adresUrl" target="_blank">@item.adres</a></p>
+                                                    <p class="mb-0"><strong>Email</strong></p>
+                                                    <p><a href="@item.emailUrl" target="_top">@item.email</a></p>
+                                                    <form action="@item.formUrl" method="POST" target="_blank">
+                                                        <div class="p pb-3"><strong>Görüşleriniz için..</strong></div>
+                                                        <div class="row mb-3">
+                                                            <div class="col">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
+                                                                    <input class="form-control" type="text" name="name" placeholder="Name" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
+                                                                    <input class="form-control" type="text" name="Subject" placeholder="Subject" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                                                    <input class="form-control" type="email" name="_replyto" placeholder="E-mail" required="required" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control" name="message" placeholder="Your Message" required="required"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <button class="btn btn-primary" type="submit">Send</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
